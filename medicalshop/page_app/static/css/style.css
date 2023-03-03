@@ -1,11 +1,23 @@
+.second-nav {
+    z-index: 100;
+  }
+  
+  .carousel-inner {
+    height: 650px;
+    width: 1500px;
+  }
+  .nav-bar-color{
+    background-color:#dbb8b9!important;
+}
+.nav-logo-font{
+  font-family: 'Kanit', sans-serif;
+font-family: 'Merriweather', serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Shantell Sans', cursive;
+}
 body{
-    
-    font-family: 'Merriweather', serif;
-    }
-    h1{
-        color :#d7736c;
-    }
-    .nav-bar-color{
-        background-color:#dbb8b9!important;
-    }
-    
+  font-family: 'Kanit', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Merriweather', serif;
+font-family: 'Oswald', sans-serif;
+}

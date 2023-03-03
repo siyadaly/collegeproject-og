@@ -9,3 +9,5 @@ def sale(request):
     return render (request,'sale.html')
 def purchase(request):
     return render (request,'purchase.html')    
+def about(request):
+    return render (request,'about.html')  
