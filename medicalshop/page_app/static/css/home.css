@@ -1,0 +1,22 @@
+.col-class {
+  overflow: hidden;
+}
+
+.content-img {
+  width: 600px;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+.car-img {
+  height: 600px;
+  object-fit: cover;
+}
+
+.features-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.features-card {
+  margin-bottom: 20px;
+}
