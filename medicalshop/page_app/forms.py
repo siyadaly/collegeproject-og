@@ -13,4 +13,14 @@ class staffForm(UserCreationForm):
         model = User 
         fields = ('username','email','password1','password2')
 
+class customerForm(UserCreationForm):
+    def __init__(self,*args,**kwargs):
+        super(customerForm,self).__init__(*args,**kwargs)
+        self.fields['email'].help_text =''
+        self.fields['password1'].help_text =''
+
+    class Meta:
+        model = User 
+        fields = ('username','email','password1','password2')
+
 

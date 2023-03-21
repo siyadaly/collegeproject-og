@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import staffForm
+from .forms import customerForm
 from .models import Profile
 
 # Create your views here.
@@ -41,7 +42,7 @@ def customerhome(request):
     return render(request,'customerhome.html')
 def customerregister(request):
     if request.method == 'POST':
-        form =customerForm(request.POST)
+        form = customerForm(request.POST)
         if form.is_valid():
             user = form.save()
             profile = Profile()
