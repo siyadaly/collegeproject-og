@@ -34,6 +34,24 @@
   margin: 90px auto;
   right: 200px;
 }
-.division_img{
+.division_img {
   height: 20px;
+}
+.doc-img {
+  width: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 190px;
+}
+
+.card {
+  height: 300px;
+  margin: 10px 10px;
+}
+
+.card-body {
+  height: 100px;
+  margin: 0;
 }
