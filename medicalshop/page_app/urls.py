@@ -15,6 +15,11 @@ urlpatterns = [
     path('customer/home/',views.customerhome,name="customerhome"),
     path('customer/register/',views.customerregister,name="customerregister"),
     path('staff/register/',views.staffregister,name="staffregister"),
+    path('staff/logout/',views.stafflogout,name="stafflogout"),
+    path('customer/logout/',views.customerlogout,name="customerlogout"),
+
+
+
 
 
 

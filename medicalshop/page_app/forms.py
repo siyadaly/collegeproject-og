@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class staffForm(UserCreationForm):
     def __init__(self,*args,**kwargs):
         super(staffForm,self).__init__(*args,**kwargs)
+        self.fields['username'].help_text=''
         self.fields['email'].help_text =''
         self.fields['password1'].help_text =''
 
@@ -16,6 +17,7 @@ class staffForm(UserCreationForm):
 class customerForm(UserCreationForm):
     def __init__(self,*args,**kwargs):
         super(customerForm,self).__init__(*args,**kwargs)
+        self.fields['username'].help_text=''
         self.fields['email'].help_text =''
         self.fields['password1'].help_text =''
 
