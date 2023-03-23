@@ -1,18 +1,37 @@
 {% extends 'base.html'%}
 {% load static %}
- {% block title %} 
+{% block title %} 
  About 
- {% endblock title %}
+{% endblock title %}
  
- {% block style %}
+{% block style %}
  <link rel="stylesheet" href="{% static 'css/about.css' %}"/>
- {% endblock style %}
+{% endblock style %}
 
- {% block content %}
-<div id="about_color">
-      <h2>hellos</h2>
-
+{% block content %}
+<h1>ABOUT US</h1>
+    <div class="about-div">
+    <p>Always sell the drugs in the supervision of Registered Pharmacist as the Registered Pharmacist is the custodian of 
+        drugs and responsible for purchase, stocking, sale and maintenance of quality of drug. 20. Never purchase,
+         stock and sell a drug which you cannot consume yourself and for your family when required.
+         Maintaining full control over delivering, stocking and labeling medicine and other products.</p>
+     
+    
+    
+    
+     <p>   Telemedicine means a form of telehealth which is the delivery of clinical health-care services by means of real time 2-way audio, visual, 
+        or other telecommunications or electronic communications, including the application of secure video conferencing or store and forward transfer 
+        technology to provide or support health-care delivery, which facilitate the assessment, diagnosis, consultation, treatment, education, 
+        care management and self-management of a patient's health care by a licensee practicing within his or her scope of practice as would be practiced
+         in-person with a patient and with other restrictions as defined in regulation.</p>
+        
+      <p>  Hospital supply systems should ensure adequate stock of all the required items to maintain uninterrupted supply. 
+        Advances in medical care and drugs have disproportionately increased the expenditure on health care delivery. Therefore, 
+        about one-third of the hospital budget is spent on purchasing various materials and supplies including medicines. This
+         necessitates the effective and efficient management of medical store by keeping a close supervision on important drugs,
+         prevention of pilferage, and priority setting in purchase and distribution of drugs</p>
+    </div>
+<div id= "about_img"></div>
+     <img class="doc-img" src="{% static 'img/about5.jpg' %}">
 </div>
-
-
  {% endblock content %}

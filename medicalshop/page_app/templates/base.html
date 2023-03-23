@@ -31,8 +31,7 @@ rel="stylesheet">
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -46,9 +45,7 @@ rel="stylesheet">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'purchase' %}">Purchase</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'sale' %}">Sale</a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
@@ -58,18 +55,22 @@ rel="stylesheet">
     </nav>
   {% block content %}
   {% endblock content %}
+  <br><br>
+  
   <section class="">
     <!-- Footer -->
-    <footer class="text-center text-white" style="background-color: #0a4275;">
+    <footer class="text-center text-white" style="background-color: #F08080;">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: CTA -->
         <section class="">
           <p class="d-flex justify-content-center align-items-center">
             <span class="me-3">Register for free</span>
-            <button type="button" class="btn btn-outline-light btn-rounded">
-              Sign up!
-            </button>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'customerregister' %}">
+                <button type="button" class="btn btn-outline-light btn-rounded">Register </button> </a>
+            </li>
+         
           </p>
         </section>
         <!-- Section: CTA -->
@@ -78,8 +79,8 @@ rel="stylesheet">
   
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+       
+        <a class="nav-link" href="{% url 'product' %}">product</a>
       </div>
       <!-- Copyright -->
     </footer>

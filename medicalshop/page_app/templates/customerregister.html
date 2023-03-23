@@ -14,8 +14,10 @@
             margin: 40px auto;
             width:500px;
             padding: 20px 30px;
-            border: 1px solid #27AE60 ;
+            border: 1px solid brown;
             border-radius: 5px;
+            background-color: #eb9b9b;
+            color: beige;
             
         }
         h2{
@@ -29,6 +31,7 @@
     <form method="post">
     <h1>Register as customer</h1>
     {% csrf_token %} {{form  | crispy}}
+    <p>Do you account?<a href="{% url 'customerlogin' %}">Login</a></p>
     <button class ="btn btn-primary" type="submit">Register</button>
 </form>
 </body>
