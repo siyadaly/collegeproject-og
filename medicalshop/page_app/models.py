@@ -9,6 +9,12 @@ class Profile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE )
     type = models.CharField(max_length=150, choices = CHOICES, default = "STAFF")
+class Category(models.Model):
+    name= models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Product(models.Model):
@@ -16,6 +22,7 @@ class Product(models.Model):
     cost = models.IntegerField()
     type = models.TextField()
     product_Description = models.TextField()
+    Category =models.ForeignKey(Category,on_delete=models.CASCADE)
    
 
 class Order(models.Model):

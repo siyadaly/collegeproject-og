@@ -75,7 +75,7 @@ def customer_login(request):
     else:
         form = AuthenticationForm()
     return render(request,'customerlogin.html',{'form':form})
-@user_passes_test(is_staff,login_url='/staff/login/')
+# @user_passes_test(is_staff,login_url='/staff/login/')
 def staffhome(request):
     return render(request,'staffhome.html')
 @user_passes_test(is_customer,login_url='/customer/login/')

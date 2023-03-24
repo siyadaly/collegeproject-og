@@ -12,6 +12,10 @@
     color:navy;
     text-align:center;
   }
- #about_img{
-  max-width: 800px;
+
+ .doc-img{
+  width: 100%;
+ }
+ .h1{
+  margin-top: 50px;
  }
