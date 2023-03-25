@@ -19,10 +19,13 @@ Home
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="control-panel">
-            <input class="form-control" placeholder="Search"  />
-            <button type="button" class="btn btn-primary">Search</button> 
-          </div>
+          <form class="control-panel" method='post'>
+            {% csrf_token %}
+            <input name="search" class="form-control" placeholder="Search"  />
+           <button type="submit" class="btn btn-primary">
+            Search
+          </button> 
+          </form>
           <div class="carousel-item active">
             <img src="{% static 'img/home1.jpg' %}" class="d-block w-100 car-img" alt="...">
           </div>
@@ -71,13 +74,15 @@ Home
         <img src="/media/{{category.img}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{category.name}} </h5>
-          <a href="{% url 'purchase' %}" class="btn btn-primary">Find More</a>
+          <a href="{% url 'product' %}?category={{category.id}}" class="btn btn-primary">Find More</a>
         </div>
       </div>    
     </div>
     {% endfor %}
   </div>
 </div>
+
+
 
 
 

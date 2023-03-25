@@ -8,14 +8,15 @@ urlpatterns = [
     path('about/', views.about,name='about'),
     path('login', views.login,name='login'),
     path('register', views.register,name='register'),
-    path('staff/login/',views.staff_login,name="stafflogin"),
-    path('customer/login/',views.customer_login,name="customerlogin"),
-    path('staff/home/',views.staffhome,name="staffhome"),
-    path('customer/home/',views.customerhome,name="customerhome"),
+    # customer
     path('customer/register/',views.customerregister,name="customerregister"),
+    path('customer/login/',views.customer_login,name="customerlogin"),
+    path('customer/home/',views.customerhome,name="customerhome"),
+    #staff
     path('staff/register/',views.staffregister,name="staffregister"),
     path('staff/logout/',views.stafflogout,name="stafflogout"),
-    path('customer/logout/',views.customerlogout,name="customerlogout"),
+    path('staff/home/',views.staffhome,name="staffhome"),
+    path('staff/add-product/',views.staff_add_product,name="staff-add-product"),
 
 
 

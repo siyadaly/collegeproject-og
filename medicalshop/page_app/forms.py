@@ -24,4 +24,9 @@ class customerForm(UserCreationForm):
     class Meta:
         model = User 
         fields = ('username','email','password1','password2')
-# class ProductForm(forms.ModelForm):
+
+
+class ProductForm(forms.ModelForm):
+      class Meta:
+        model = Product
+        fields = ('product_name','product_description', 'price', 'img','category' )

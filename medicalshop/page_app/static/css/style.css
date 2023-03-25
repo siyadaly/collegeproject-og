@@ -1,23 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .second-nav {
-    z-index: 100;
-  }
-  
-  .carousel-inner {
-    height: 650px;
-    width: 1500px;
-  }
-  .nav-bar-color{
-    background-color:#dbb8b9!important;
+  z-index: 100;
 }
-.nav-logo-font{
-  font-family: 'Kanit', sans-serif;
-font-family: 'Merriweather', serif;
-font-family: 'Oswald', sans-serif;
-font-family: 'Shantell Sans', cursive;
+
+.carousel-inner {
+  height: 650px;
+  width: 1500px;
 }
-body{
+.nav-bar-color {
+  background-color: #dbb8b9 !important;
+}
+.nav-logo-font {
   font-family: 'Kanit', sans-serif;
-font-family: 'Lato', sans-serif;
-font-family: 'Merriweather', serif;
-font-family: 'Oswald', sans-serif;
+  font-family: 'Merriweather', serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Shantell Sans', cursive;
+}
+body {
+  font-family: 'Kanit', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Merriweather', serif;
+  font-family: 'Oswald', sans-serif;
+}
+
+.footer-medical {
+  width: 100%;
 }
