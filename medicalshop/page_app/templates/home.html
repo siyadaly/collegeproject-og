@@ -65,52 +65,17 @@ Home
     </div>
   </div>
   <div class='row features-card'>
+    {% for category in categories %}
     <div class='col-4 p-0 text-center'>
       <div class="card" style="width: 18rem;">
-        <img src="{% static 'img/skin care.jpg' %}" class="card-img-top" alt="...">
+        <img src="/media/{{category.img}}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">SKIN CARE </h5>
-          <a href="{% url 'purchase' %}" class="btn btn-primary">Go purchase</a>
+          <h5 class="card-title">{{category.name}} </h5>
+          <a href="{% url 'purchase' %}" class="btn btn-primary">Find More</a>
         </div>
       </div>    
     </div>
-    <div class='col-4 p-0 text-center'>
-      <div class="card" style="width: 18rem;">
-        <img src= "{% static 'img/anti cancer.jpg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">ANTI CANCER</h5>
-          <a href="{% url 'purchase' %}" class="btn btn-primary">Go purchase</a>
-        </div>
-      </div>     
-    </div>
-    <div class='col-4 p-0 text-center'>
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'img/heart.jpg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">HEART DISORDER</h5>
-          <a href="{% url 'purchase' %}" class="btn btn-primary">Go purchase</a>
-        </div>
-      </div> 
-    </div>
-    <div class='col-4 p-0 text-center'>
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'img/HIV.jpg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title" style="width:18rem">HIV/AIDES</h5>
-          <a href="{% url 'purchase' %}" class="btn btn-primary">Go purchase</a>
-        </div>
-      </div> 
-    </div>
-    
-    <div class='col-4 p-0 text-center'>
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'img/other.jpg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">HAIR LOSS</h5>
-          <a href="{% url 'purchase' %}" class="btn btn-primary">Go purchase</a>
-        </div>
-      </div> 
-    </div>
+    {% endfor %}
   </div>
 </div>
 

@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import staffForm
-from .forms import customerForm
-from .models import Profile
+from .forms import staffForm,customerForm
+from .models import Profile, Category
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import user_passes_test
@@ -20,7 +19,11 @@ def is_customer(user):
             return False
 
 def home(request):
-    return render (request,'home.html')
+    categories = Category.objects.all()
+    data ={
+        "categories":categories
+    }
+    return render (request,'home.html',data)
 def product(request):
     return render (request,'product.html')
 def purchase(request):
