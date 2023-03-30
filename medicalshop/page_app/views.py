@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import staffForm,customerForm,ProductForm
-from .models import Profile, Category, Product
+from .models import Profile, Category, Product,Order,Cart
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import user_passes_test
@@ -65,9 +65,9 @@ def customer_login(request):
             if user is not None:
                 login(request,user)
                 if(user.profile.type == 'STAFF'):
-                    return redirect("customerlogin")
+                    return redirect("stafflogin")
                 else:
-                    return redirect("customerhome")
+                    return redirect("home")
     else:
         form = AuthenticationForm()
     return render(request,'customerlogin.html',{'form':form})
@@ -111,7 +111,7 @@ def customerlogout(request):
 
 
 # CUSTOMER
-
+@user_passes_test(is_customer,login_url='/customer/login/')
 def home(request):
     if request.method == 'POST':
         search  = request.POST['search']
@@ -124,6 +124,7 @@ def home(request):
     
     return render (request,'home.html',data)
 
+@user_passes_test(is_customer,login_url='/customer/login/')
 def product(request):
     categoryID = request.GET.get('category')
     search = request.GET.get('search')
@@ -146,11 +147,47 @@ def product(request):
     }
     return render (request,'product.html',data)
 
+@user_passes_test(is_customer,login_url='/customer/login/')
+def add_to_cart(request,id):
+    product = Product.objects.get(id=id)
+    checkCart = Cart.objects.filter(product=product)
+    if not checkCart:
+        cart = Cart()
+        cart.customer = request.user
+        cart.product = product
+        cart.save()
+    return redirect('add_tocart')
+ 
+@user_passes_test(is_customer,login_url='/customer/login/')
+def cart(request):
+    cart = Cart.objects.filter(customer=request.user)
+    data={
+        "cart":cart
+    }
+    return render (request,'add_tocart.html',data) 
+
+@user_passes_test(is_customer,login_url='/customer/login/')
+def customer_order(request):
+    order = Order.objects.filter(customer=request.user)
+    data={
+        "order":order
+    }
+    return render (request,'customer_order.html',data)
+
+@user_passes_test(is_customer,login_url='/customer/login/')
+def order(request,id):
+    product = Product.objects.get(id=id)
+    order = Order()
+    order.customer = request.user
+    order.product = product
+    order.save()
+    return redirect('customer_order')
 
 
 # STAFF
 
 # @user_passes_test(is_staff,login_url='/staff/login/')
+@user_passes_test(is_staff,login_url='/staff/login/')
 def staffhome(request):
     products = Product.objects.all()
     pagination = Paginator(products,10)
@@ -163,6 +200,7 @@ def staffhome(request):
     }
     return render(request,'staffhome.html',data)
 
+@user_passes_test(is_staff,login_url='/staff/login/')
 def staff_add_product(request):
      
     if request.method == 'POST':
@@ -183,9 +221,11 @@ def staff_add_product(request):
     }
 
     return render(request, 'staffaddproduct.html',data)
+
+@user_passes_test(is_staff,login_url='/staff/login/')
 def stafforder(request):
-    return render (request,'staffporder.html') 
-def customer_order(request):
-    return render (request,'customer_order.html') 
-def add_tocart(request):
-    return render (request,'add_tocart.html') 
+    order = Order.objects.all()
+    data={
+        "orders":order
+    }
+    return render (request,'stafforder.html',data) 

@@ -1,0 +1,27 @@
+.order-page {
+  width: 90%;
+  margin: 90px auto;
+}
+
+.order-container {
+  width: 90%;
+  margin: 30px auto;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+
+.order-list {
+  width: 100%;
+  display: flex;
+}
+
+a {
+  text-align: left;
+  width: 30%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.order-list:hover {
+  background-color: rgb(255, 227, 189);
+}

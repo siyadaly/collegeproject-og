@@ -40,19 +40,11 @@ rel="stylesheet">
               <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="{% url 'product' %}">Product</a>
+              <a class="nav-link " href="{% url 'staff-add-product' %}">Add&nbsp;Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'add_tocart' %}"> cart</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'customer_order' %}">My order</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
+              <a class="nav-link" href="{% url 'stafforder' %}">Orders</a>
+            </li> 
             <li class="nav-item">
               <a class="nav-link" href="{% url 'customerlogout' %}">Logout</a>
             </li>

@@ -1,0 +1,30 @@
+{% extends 'staffbase.html'%}
+{% load static %}
+ {% block title %} 
+ product
+ {% endblock title %}
+ 
+ {% block style %}
+ <link rel="stylesheet" href="{% static 'css/staff-order.css' %}"/>
+ {% endblock style %}
+
+ {% block content %}
+ <div class="order-page">
+        <h1>Orders</h1>
+    <div class="order-container">
+        <div class="order-list">
+            <a>ID</a>
+            <a>Product</a>
+            <a>Customer</a>
+        </div>
+        {% for order in orders %}
+        <div class="order-list">
+            <a>{{order.id}}</a>
+            <a>{{order.product.product_name}}</a>
+            <a>{{order.customer.username}}</a>
+        </div>
+        {% endfor %}
+    </div>
+ </div>
+
+{% endblock content %}

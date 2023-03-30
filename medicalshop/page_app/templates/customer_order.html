@@ -1,14 +1,32 @@
 {% extends 'base.html'%}
 {% load static %}
  {% block title %} 
- My order
+ cart 
  {% endblock title %}
  
  {% block style %}
- <link rel="stylesheet" href="{% static 'css/order.css' %}"/>
+ <link rel="stylesheet" href="{% static 'css/product.css' %}"/>
+
  {% endblock style %}
 
  {% block content %}
-<h1>My order</h1>
+
+ <div class="product-page">
+        <h1>My Orders</h1>
+    <div class="product-container">
+        {% for product in order %}
+        <div class="product-card">
+            <img class="product-img" src="/media/{{product.product.img}}" />
+            <div class="product-content">
+                <p class="product-name">{{product.product.product_name}}</p>
+                <p class="product-price">{{product.product.price}}</p>
+                <p class="product-description">{{product.product.product_description}}</p>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+ </div>
+
 
 {% endblock content %}

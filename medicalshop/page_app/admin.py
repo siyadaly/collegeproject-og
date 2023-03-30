@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile,Product,Order,Category
+from .models import Profile,Product,Order,Category,Cart
 
 class ProfileAdmin(admin.ModelAdmin):
     list_filter =("id","type")
@@ -24,3 +24,5 @@ class OrderAdmin(admin.ModelAdmin):
     list_display =("id","product_name","category")
 
 admin.site.register(Order)
+
+admin.site.register(Cart)

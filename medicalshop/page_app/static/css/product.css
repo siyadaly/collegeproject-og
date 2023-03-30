@@ -1,19 +1,20 @@
 .product-page {
-  margin: 100px 20px 0px 20px;
+  margin: 100px 20px 0px 60px;
 }
 
 .product-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .product-card {
   width: 25%;
-  height: 400px;
+  height: 450px;
   border-radius: 4px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  border: 1px solid rgb(199, 199, 199);
   overflow: hidden;
   cursor: pointer;
 }
@@ -39,7 +40,7 @@
 }
 
 .product-price::before {
-  content: 'Rs: ';
+  content: "Rs: ";
 }
 
 .product-description {
@@ -59,4 +60,29 @@
 .pagination span {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.ctrl {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.order-now {
+  padding: 5px 10px;
+  background-color: rgb(255, 201, 5);
+  border-radius: 5px;
+}
+
+.add-to-cart {
+  padding: 5px 10px;
+  background-color: green;
+  border-radius: 5px;
 }

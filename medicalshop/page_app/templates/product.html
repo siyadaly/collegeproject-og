@@ -24,6 +24,10 @@
                 <p class="product-price">{{product.price}}</p>
                 <p class="product-description">{{product.product_description}}</p>
             </div>
+            <div class="ctrl">
+                <a href="{% url 'add_order' product.id %}" class="order-now">Order Now<a/>
+                <a href="{% url 'add_cart' product.id %}" class="add-to-cart">Add to Cart<a/>
+            </div>
         </div>
         {% endfor %}
     </div>

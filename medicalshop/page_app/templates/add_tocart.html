@@ -5,10 +5,30 @@
  {% endblock title %}
  
  {% block style %}
- <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+ <link rel="stylesheet" href="{% static 'css/product.css' %}"/>
+
  {% endblock style %}
 
  {% block content %}
+
+ <div class="product-page">
+        <h1>CART</h1>
+    <div class="product-container">
+        {% for product in cart %}
+        <div class="product-card">
+            <img class="product-img" src="/media/{{product.product.img}}" />
+            <div class="product-content">
+                <p class="product-name">{{product.product.product_name}}</p>
+                <p class="product-price">{{product.product.price}}</p>
+                <p class="product-description">{{product.product.product_description}}</p>
+            </div>
+            <div style="justify-content:flex-end" class="ctrl">
+                <a style="margin-right:10px" class="order-now">Order Now<a/>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+ </div>
 
 
 {% endblock content %}
