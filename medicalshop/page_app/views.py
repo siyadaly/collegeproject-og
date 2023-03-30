@@ -19,9 +19,7 @@ def is_customer(user):
     except Profile.DoesNotExist:         
             return False
 
-
-def purchase(request):
-    return render (request,'purchase.html')    
+   
 def about(request):
     return render (request,'about.html')
  
@@ -185,3 +183,9 @@ def staff_add_product(request):
     }
 
     return render(request, 'staffaddproduct.html',data)
+def stafforder(request):
+    return render (request,'staffporder.html') 
+def customer_order(request):
+    return render (request,'customer_order.html') 
+def add_tocart(request):
+    return render (request,'add_tocart.html') 
