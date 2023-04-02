@@ -1,7 +1,7 @@
 from django import forms
 from django .contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Product
+from .models import Product,Address
 
 class staffForm(UserCreationForm):
     def __init__(self,*args,**kwargs):
@@ -30,3 +30,9 @@ class ProductForm(forms.ModelForm):
       class Meta:
         model = Product
         fields = ('product_name','product_description', 'price', 'img','category' )
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ('address',)

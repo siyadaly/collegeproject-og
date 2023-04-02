@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import staffForm,customerForm,ProductForm
-from .models import Profile, Category, Product,Order,Cart
+from .forms import staffForm,customerForm,ProductForm,AddressForm
+from .models import Profile, Category, Product,Order,Cart, Address
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import user_passes_test
@@ -137,7 +137,7 @@ def product(request):
     else:
         products = Product.objects.all()
         category = None
-    pagination = Paginator(products,10)
+    pagination = Paginator(products,100)
     page_number = request.GET.get('page')
     page_obj = pagination.get_page(page_number)
     data ={
@@ -167,6 +167,41 @@ def cart(request):
     return render (request,'add_tocart.html',data) 
 
 @user_passes_test(is_customer,login_url='/customer/login/')
+def customer_address(request,id):
+    if request.method == 'POST':
+        form = AddressForm(request.POST)
+        if form.is_valid():
+            currentAddress = Address.objects.filter(user=request.user)
+            if currentAddress:
+                address = currentAddress[0]
+                address.address = form.cleaned_data['address']
+                address.user = request.user
+                address.save()
+            else :
+                address = Address()
+                address.address = form.cleaned_data['address']
+                address.user = request.user
+                address.save()
+            return redirect(f'/customer/order/{id}')
+    else:
+        form = AddressForm()
+
+    ad = Address.objects.filter(user=request.user)
+    if ad:
+        single_ad = ad[0]
+    else:
+        single_ad = None
+
+    data={
+        "form":form,
+        "address": single_ad,
+        "id":id
+    }
+    return render(request,'address.html',data)
+
+
+
+@user_passes_test(is_customer,login_url='/customer/login/')
 def customer_order(request):
     order = Order.objects.filter(customer=request.user)
     data={
@@ -190,7 +225,7 @@ def order(request,id):
 @user_passes_test(is_staff,login_url='/staff/login/')
 def staffhome(request):
     products = Product.objects.all()
-    pagination = Paginator(products,10)
+    pagination = Paginator(products,1000)
     page_number = request.GET.get('page')
     page_obj = pagination.get_page(page_number)
     data ={

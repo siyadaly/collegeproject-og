@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} 
+ Address
+{% endblock title %}
+ 
+{% block style %}
+ <link rel="stylesheet" href="{% static 'css/address.css' %}"/>
+{% endblock style %}
+{% block content %}
+<div class="address-container">
+    <div class="first-container">
+        <h3>Current Address</h3>
+        {% if address %}
+        <p>{{address.address}}</p>
+        {% else%}
+        <p>You have not added an address</p>
+        {% endif %}
+        <button class="btn btn-primary"><a href="/customer/order/{{id}}">Continue with current</a></button>
+
+    </div>
+    <div class="second-container">
+        <form method="post">
+            {% csrf_token %}
+            {{form | crispy}}
+            <button type="submit" class="btn btn-primary">Change Address</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

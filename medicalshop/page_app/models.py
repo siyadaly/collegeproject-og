@@ -38,3 +38,6 @@ class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True) 
     
+class Address(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    address = models.TextField()
