@@ -15,11 +15,16 @@
             padding: 20px 30px;
             border: 1px solid #27AE60 ;
             border-radius: 5px;
+            background-color:#eb9b9b;
 
+        }
+        body{
+            background-color: #CD7F32;
         }
     </style>
 </head>
 <body>
+    <h1>Medical Hub</h1>
     <form method ="post">
     <h1>login</h1>
         {% csrf_token %}{{ form | crispy}}
