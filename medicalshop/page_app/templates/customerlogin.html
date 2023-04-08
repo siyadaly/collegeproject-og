@@ -25,7 +25,8 @@
     <form method ="post">
         <h1>Customer login</h1>
         {% csrf_token %}{{ form | crispy}}
-        <p>Do you haven't account?<a href="{% url 'customerregister' %}">Register</a></p>
+        <p>Do you haven't account?&nbsp;&nbsp;<a href="{% url 'customerregister' %}">Register</a></p>
+        <p>Staff Login&nbsp;&nbsp;<a href="{% url 'stafflogin' %}">Login</a></p>
         <button class="btn btn-primary"type="submit">login</button>
     </form>
     

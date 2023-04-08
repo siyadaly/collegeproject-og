@@ -26,7 +26,11 @@
             </div>
             <div class="ctrl">
                 <a href="{% url 'address' product.id %}" class="order-now">Order Now<a/>
+                {% if product.id in cart %}
+                <a href="{% url 'add_tocart' %}" class="add-to-cart">Added<a/>
+                {% else %}
                 <a href="{% url 'add_cart' product.id %}" class="add-to-cart">Add to Cart<a/>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

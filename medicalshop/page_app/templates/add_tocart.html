@@ -23,7 +23,8 @@
                 <p class="product-description">{{product.product.product_description}}</p>
             </div>
             <div style="justify-content:flex-end" class="ctrl">
-                <a style="margin-right:10px" class="order-now">Order Now<a/>
+                <a href="{% url 'address' product.product.id %}" style="margin-right:10px" class="order-now">Order Now<a/>
+                <a href="{% url 'remove_cart' product.id %}" style="background-color:red;margin-right:5px" style="margin-right:10px" class="order-now">Remove<a/>
             </div>
         </div>
         {% endfor %}

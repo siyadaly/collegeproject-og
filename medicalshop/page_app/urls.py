@@ -23,16 +23,6 @@ urlpatterns = [
     path('customer/order/<int:id>',views.order,name="add_order"),
     path('addtocart/',views.cart,name="add_tocart"),
     path('addtocart/<int:id>',views.add_to_cart,name="add_cart"),
-    path('address/<int:id>',views.customer_address,name="address")
-
-
-
-
-
-
-
-
-
-
-    
+    path('removefromcart/<int:id>',views.remove_from_cart,name="remove_cart"),
+    path('address/<int:id>',views.customer_address,name="address")    
 ]

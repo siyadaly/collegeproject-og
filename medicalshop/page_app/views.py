@@ -21,7 +21,7 @@ def is_customer(user):
 
    
 def about(request):
-    return render (request,'about.html')
+    return render (request,'about.html',{"is_auth":request.user and request.user.id})
  
 def register(request):
     if request.method=='POST':
@@ -30,11 +30,6 @@ def register(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
         repeatpassword = request.POST.get("Repeatpassword")
-        print(firstname)
-        print(lastname)
-        print(email)
-        print(password)
-        print(repeatpassword)
     return render(request,'register.html')  
 
 
@@ -111,7 +106,7 @@ def customerlogout(request):
 
 
 # CUSTOMER
-@user_passes_test(is_customer,login_url='/customer/login/')
+# @user_passes_test(is_customer,login_url='/customer/login/')
 def home(request):
     if request.method == 'POST':
         search  = request.POST['search']
@@ -119,15 +114,20 @@ def home(request):
     
     categories = Category.objects.all()
     data ={
-        "categories":categories
+        "categories":categories,
+        "is_auth":request.user and request.user.id
     }
     
     return render (request,'home.html',data)
 
-@user_passes_test(is_customer,login_url='/customer/login/')
+# @user_passes_test(is_customer,login_url='/customer/login/')
 def product(request):
     categoryID = request.GET.get('category')
     search = request.GET.get('search')
+    cart = Cart.objects.filter(customer=request.user)
+    products_in_cart_id =[]
+    for i in cart:
+        products_in_cart_id.append(i.product.id)
     if categoryID:
         products = Product.objects.filter(category=categoryID)
         category = Category.objects.filter(id=categoryID)[0]
@@ -140,29 +140,44 @@ def product(request):
     pagination = Paginator(products,100)
     page_number = request.GET.get('page')
     page_obj = pagination.get_page(page_number)
+
     data ={
         "products":products,
         "page_obj":page_obj,
-        "category":category
+        "category":category,
+        "is_auth":request.user and request.user.id,
+        "cart":products_in_cart_id
+
     }
     return render (request,'product.html',data)
 
 @user_passes_test(is_customer,login_url='/customer/login/')
 def add_to_cart(request,id):
     product = Product.objects.get(id=id)
-    checkCart = Cart.objects.filter(product=product)
+    checkCart = Cart.objects.filter(customer=request.user).filter(product=product)
     if not checkCart:
         cart = Cart()
         cart.customer = request.user
         cart.product = product
         cart.save()
+    return redirect('product')
+
+@user_passes_test(is_customer,login_url='/customer/login/')
+def remove_from_cart(request,id):
+    checkCart = Cart.objects.get(pk=id)
+    if checkCart:
+        checkCart.delete()
     return redirect('add_tocart')
  
 @user_passes_test(is_customer,login_url='/customer/login/')
 def cart(request):
     cart = Cart.objects.filter(customer=request.user)
+    print("helo cart")
+    print(cart)
     data={
-        "cart":cart
+        "cart":cart,
+        "is_auth":request.user and request.user.id
+
     }
     return render (request,'add_tocart.html',data) 
 
@@ -195,7 +210,9 @@ def customer_address(request,id):
     data={
         "form":form,
         "address": single_ad,
-        "id":id
+        "id":id,
+        "is_auth":request.user and request.user.id
+
     }
     return render(request,'address.html',data)
 
@@ -205,7 +222,9 @@ def customer_address(request,id):
 def customer_order(request):
     order = Order.objects.filter(customer=request.user)
     data={
-        "order":order
+        "order":order,
+        "is_auth":request.user and request.user.id
+
     }
     return render (request,'customer_order.html',data)
 
@@ -230,7 +249,9 @@ def staffhome(request):
     page_obj = pagination.get_page(page_number)
     data ={
         "products":products,
-        "page_obj":page_obj
+        "page_obj":page_obj,
+        "is_auth":request.user and request.user.id
+
 
     }
     return render(request,'staffhome.html',data)
@@ -252,7 +273,9 @@ def staff_add_product(request):
         product_form = ProductForm()
 
     data ={
-        "product_form":product_form
+        "product_form":product_form,
+        "is_auth":request.user and request.user.id
+
     }
 
     return render(request, 'staffaddproduct.html',data)
@@ -261,6 +284,8 @@ def staff_add_product(request):
 def stafforder(request):
     order = Order.objects.all()
     data={
-        "orders":order
+        "orders":order,
+        "is_auth":request.user and request.user.id
+
     }
     return render (request,'stafforder.html',data) 

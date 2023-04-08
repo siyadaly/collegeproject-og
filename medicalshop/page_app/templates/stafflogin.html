@@ -20,9 +20,10 @@
     </style>
 </head>
 <body>
-    <h1>login</h1>
     <form method ="post">
+    <h1>login</h1>
         {% csrf_token %}{{ form | crispy}}
+        <p>Do you haven't account?&nbsp;&nbsp;<a href="{% url 'staffregister' %}">Register</a></p>
         <button class="btn btn-primary"type="submit">login</button>
     </form>
     
