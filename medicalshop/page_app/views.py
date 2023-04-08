@@ -124,10 +124,12 @@ def home(request):
 def product(request):
     categoryID = request.GET.get('category')
     search = request.GET.get('search')
-    cart = Cart.objects.filter(customer=request.user)
     products_in_cart_id =[]
-    for i in cart:
-        products_in_cart_id.append(i.product.id)
+    if(request.user and request.user.id):
+        cart = Cart.objects.filter(customer=request.user)
+        for i in cart:
+            products_in_cart_id.append(i.product.id)
+    
     if categoryID:
         products = Product.objects.filter(category=categoryID)
         category = Category.objects.filter(id=categoryID)[0]
